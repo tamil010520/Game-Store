@@ -1,0 +1,176 @@
+{% extends 'userheader.html' %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% block content %}
+  <style>
+body {
+        background-image:url("static/images/Mario.gif");
+        background-repeat:norepeat;
+        background-size:cover;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+h1 {
+  animation: flicker 1.5s infinite alternate;
+  color: #fff;
+}
+
+h1 {
+  text-align:center;
+}
+
+/* Flickering animation */
+@keyframes flicker {
+
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+      text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #0fa,
+      0 0 80px #0fa,
+      0 0 90px #0fa,
+      0 0 100px #0fa,
+      0 0 150px #0fa;
+
+  }
+
+  20%, 24%, 55% {
+      text-shadow: none;
+  }
+}
+
+
+           }
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+</style>
+  <script type="text/javascript">
+    function CalcTotal()
+    {
+
+    var qty = parseInt(document.getElementById('qty').value);
+    var price = parseInt(document.getElementById('price').value);
+    var rqty = parseInt(document.getElementById('rqty').value);
+
+    if(rqty>qty)
+    {
+      alert('Req Qty > Qty');
+      document.getElementById('rqty').value="0";
+      document.getElementById('total').value="0";
+    }
+    else
+    {
+      var total = rqty*price;
+      document.getElementById('total').value=total;
+    }
+    }
+  </script>
+</head>
+<body>
+
+
+<form action="/useraddtocart1" method="post">
+  <div class="container">
+    <h1>User Add to Cart Page</h1>
+    {{msg}}
+    <hr>
+
+    <label for="pname"><b>Product Id</b></label>
+    <input type="text" placeholder="Enter Product Id" name="pid" id="pid" required
+    value="{{data[0]}}" readonly>
+
+    <label for="pname"><b>Product Name</b></label>
+    <input type="text" placeholder="Enter Product Name" name="pname" id="pname" required
+    value="{{data[1]}}" readonly>
+
+    <label for="ptype"><b>Product Type</b></label>
+    <!--<input type="password" placeholder="Enter Password" name="psw" id="psw" required>-->
+    <br>
+    <input type="text" placeholder="Enter Product type" name="ptype" id="ptype" required
+    value="{{data[2]}}" readonly>
+
+    <br><br>
+    <label for="qty"><b>Quantity</b></label>
+    <input type="text" placeholder="Quantity" name="qty" id="qty" required
+    value="{{data[3]}}" readonly>
+
+    <label for="price"><b>Price</b></label>
+    <input type="text" placeholder="Price" name="price" id="price" required
+    value="{{data[4]}}" readonly>
+
+    <label for="rqty"><b>Req Quantity</b></label>
+    <input type="text" placeholder="Req Quantity" name="rqty" id="rqty" required
+    value="0" onkeydown="CalcTotal()">
+
+    <label for="total"><b>Total</b></label>
+    <input type="text" placeholder="Total" name="total"  id="total" required
+    readonly>
+
+    <label for="psw-repeat"><b>Product Image</b></label>
+    <img src="static/uploads/{{data[5]}}" width="200px" height="200px" />
+
+    <button type="submit" class="registerbtn">Add To Cart</button>
+  </div>
+</form>
+</body>
+{% endblock %}
+</html>

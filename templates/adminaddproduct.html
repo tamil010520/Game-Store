@@ -1,0 +1,130 @@
+{% extends 'adminheader.html' %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% block content %}
+  <style>
+body {
+  background-image:url("static/images/forest.jpg");
+   background-repeat:norepeat;
+   background-size:cover;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+color: #fff;
+            text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 40px #0ff,
+            0 0 80px #0ff,
+            0 0 90px #0ff,
+            0 0 100px #0ff,
+            0 0 150px #0ff;
+            }
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color:#fff9f90e;
+
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+  }
+
+#psw-repeat{
+   background-color: white;
+   }
+    #bname{
+    color: white;}
+</style>
+</head>
+<body>
+
+
+<form action="/adminaddproduct" method="post" enctype="multipart/form-data">
+  <div class="container">
+    <h1>New Product Page</h1>
+    {{msg}}
+    <hr>
+    <label for="pname" id="bname"><b>Product Name</b></label>
+    <input type="text" placeholder="Enter Product Name" name="pname" id="pname" required>
+
+    <label for="ptype" id="bname"><b>Product Type</b></label>
+    <!--<input type="password" placeholder="Enter Password" name="psw" id="psw" required>-->
+    <br>
+    <select name="ptype" id="psw-repeat" style="width:300px; height:30px;">
+      <option>Keyboard</option>
+      <option>Mouse</option>
+      <option>Laptop</option>
+      <option>Games</option>
+      <option>T-Shirts</option>
+      <option>Consoles</option>
+      <option>Graphics Card</option>sql
+    </select>
+
+    <br><br>
+    <label for="psw-repeat" id="bname"><b>Quantity</b></label>
+    <input type="text" placeholder="Quantity" name="qty" id="psw-repeat" required>
+
+    <label for="psw-repeat" id="bname"><b>Price</b></label>
+    <input type="text" placeholder="Price" name="price" id="psw-repeat" required>
+
+    <label for="psw-repeat" id="bname"><b>File Upload</b></label>
+    <input type="file" placeholder="File Upload" name="file" id="psw-repeat" required>
+
+    <button type="submit" class="registerbtn">New Product</button>
+  </div>
+</form>
+</body>
+{% endblock %}
+</html>

@@ -1,0 +1,122 @@
+{% extends 'userheader.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+        background-image:url("static/images/0k6meqvps4h91.gif");
+          background-repeat:norepeat;
+          background-size:cover;
+          font-family: Arial, Helvetica, sans-serif;
+          }
+        div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        h1 {
+  animation: flicker 1.5s infinite alternate;
+  color: #fff;
+}
+
+h1 {
+  text-align:center;
+}
+
+/* Flickering animation */
+@keyframes flicker {
+
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+      text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #0fa,
+      0 0 80px #0fa,
+      0 0 90px #0fa,
+      0 0 100px #0fa,
+      0 0 150px #0fa;
+
+  }
+
+  20%, 24%, 55% {
+      text-shadow: none;
+  }
+}
+        form{
+
+           color:white;
+           margin-top:-50px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Make Payment Page</h1>
+    {{msg}}
+    <div>
+        <form action="/makepayment" method="post">
+            <table>
+                <tr>
+                    <th>
+            <label for="name">Bank Name:</label></th>
+                    <td>
+                <input type="text" name="bname"></td>
+                </tr>
+                <tr>
+<th>
+            <label for="price">Account Num:</label></th>
+                    <td>
+                <input type="text" name="accnum"></td>
+
+                    </tr>
+                <tr>
+                    <th>
+            <label for="Product">IFSC Code:</label></th>
+                    <td>
+                <input type="text" name="ifsccode"></td>
+            <br><br>
+                    </tr>
+                <tr>
+
+                    <tr>
+                    <th>
+            <label for="Product">CVV:</label></th>
+                    <td>
+                <input type="text" name="cvv"></td>
+            <br><br>
+                    </tr>
+                <tr>
+                    <tr>
+                    <th>
+            <label for="Product">Expiry Date:</label></th>
+                    <td>
+                <input type="date" name="expdate" min="2024-03-22"></td>
+            <br><br>
+                    </tr>
+                <tr>
+
+                    <tr>
+                    <th>
+            <label for="Product">Amount:</label></th>
+                    <td>
+                <input type="text" name="total" value="{{total}}"></td>
+            <br><br>
+                    </tr>
+                <tr>
+<tr>
+                    <th colspan="2">
+            <input type="submit" value="Make Payment">
+                    </th>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

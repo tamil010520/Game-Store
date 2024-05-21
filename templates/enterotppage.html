@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="static/forgetpage.css">
+    <style>
+        .container{
+              margin-top: 90px;
+              display:grid;
+              justify-content: center;
+              align-items: center;
+
+        }
+    </style>
+</head>
+<body>
+<div class="main-content">
+
+      <div class="container"style="margin-top: 60px;" >
+        <div class="row">
+
+      <div class="col">
+        <form id="contact" action="/checkotp" method="post" style="margin-top: 10px;">
+          <h4>
+              {{msg}}
+          </h4>
+            <h3>Enter OTP Page</h3><br>
+
+            <input placeholder="Your Email Id" type="text" tabindex="1" required
+            name="email" id="email" value="{{email}}" required/><br><br>
+
+
+
+            <input placeholder="OTP" type="text" tabindex="1" required id="email"
+            name="otp" id="otp"/><br><br>
+
+
+            <input type="submit" value="Check OTP" id="submit">
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

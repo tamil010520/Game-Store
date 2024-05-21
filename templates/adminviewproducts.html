@@ -1,0 +1,136 @@
+{% extends 'adminheader.html' %}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block content %}
+    <style>
+        body {
+        background-image:url("static/images/forest.jpg");
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+          padding: 16px;
+          background-color: #fff9f90e;
+        }
+        h3{
+        color: #fff;
+            text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 40px #0ff,
+            0 0 80px #0ff,
+            0 0 90px #0ff,
+            0 0 100px #0ff,
+            0 0 150px #0ff;
+            }
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+          width: 100%;
+          padding: 15px;
+          margin: 5px 0 22px 0;
+          display: inline-block;
+          border: none;
+          background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+          background-color: #ddd;
+          outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+          border: 1px solid #f1f1f1;
+          margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit button */
+        .registerbtn {
+          background-color: #04AA6D;
+          color: white;
+          padding: 16px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          opacity: 0.9;
+        }
+
+        .registerbtn:hover {
+          opacity: 1;
+        }
+
+        /* Add a blue text color to links */
+        a {
+          color: dodgerblue;
+        }
+
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+          background-color: #f1f1f1;
+          text-align: center;
+        }
+
+        table, tr, td, th
+        {
+            border-collapse:collapse;
+            font-size:18px;
+            border-style: solid;
+            border-color: black;
+        }
+        table
+        {
+            width:80%;
+            margin:25px;
+            text-align:center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <center>
+        <h3>Admin View Products Page</h3>
+
+    <table>
+<tr>
+    <th>Product Id</th>
+    <th>Product Name</th>
+    <th>Product Type</th>
+    <th>Product Quantity</th>
+    <th>Product Price</th>
+    <th>Product Image</th>
+    <th>Delete Product</th>
+</tr>
+        {% for x in data %}
+        <tr>
+            <td>{{x[0]}}</td>
+            <td>{{x[1]}}</td>
+            <td>{{x[2]}}</td>
+            <td>{{x[3]}}</td>
+            <td>{{x[4]}}</td>
+            <td>
+            <img src="static/uploads/{{x[5]}}" width="150px" height="150px"/>
+            </td>
+            <td>
+                <a href="/admindeleteproduct?id={{x[0]}}">Delete Product</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+         </center>
+</div>
+</body>
+{% endblock %}
+</html>
